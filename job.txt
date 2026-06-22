@@ -1,0 +1,41 @@
+experiences through our cloud-based platform to bring people together at work and at home. Our solutions help small business owners stay connected with their customers and manage their businesses from anywhere. For larger companies we provide customized unified communications solutions to meet their unique needs. At home, we help our customers connect with their loved ones by providing the #1 rated VoIP phone service available. We also provide them with peace of mind through our innovative smart home security solution. At Ooma, all our products and services are priced competitively, because we believe advanced technology should be accessible to all.
+About the Role:
+Ooma is hiring a Software Engineer reporting to the Director of Engineering, on the Telecommunications Platform Team. In this role you will develop a geographically distributed and redundant calling platform supporting the future of communications at Ooma.
+What You’ll Do:
+- Design, build, and maintain a geographically distributed calling platform capable of supporting millions of minutes and thousands of simultaneous sessions — infrastructure that powers real communication at massive scale
+- Work on cutting-edge AI features integrated directly into a carrier-grade platform, solving hard problems around latency, reliability, and throughput that most engineers never get to touch
+- Collaborate closely with a passionate team of engineers to ship features that directly impact how Ooma's customers communicate — from small businesses to enterprise clients
+- Dive deep into niche and emerging technologies, contributing to architectural decisions that shape the future of the platform
+- Debug complex, distributed systems issues and drive solutions end-to-end, from root cause to production
+Experience We’re Looking For:
+- Recent college graduate with a degree in Computer Science or equivalent — we're excited to help you grow from the ground up
+- Strong programming fundamentals with a hunger to level up fast in a real-world, high-stakes environment
+- Solid understanding of IP networking concepts — and a curiosity to go deeper
+- A genuine excitement for learning bleeding-edge and niche technologies that most engineers never encounter
+- A self-starter mentality — you take ownership, push through blockers, and don't wait to be told what to do next
+- A collaborative spirit — you enjoy sharing what you learn, lifting up teammates, and building a culture where knowledge flows freely
+- An interest in AI at scale — whether that's optimizing internal tooling or building customer-facing features that handle millions of interactions
+Note: This role is full remote, but the expectation is to work near Eastern standard time for the training period of 6-12 months.
+What We Offer:
+Working at Ooma means being a team player, while allowing your individual voice to come through. And, you'll receive competitive compensation, benefits and generous company perks.
+- Comprehensive Medical/Dental/Vision insurance for you and eligible dependents
+- HMO, PPO’s or a PPO with a HDHP (including HSA, which Ooma helps fund)
+ 
+- Employer Paid Income Protection Benefits (Basic Life and AD&D, Short- and Long-term disability)
+- FSA Healthcare & Dependent Care
+- Commuter Benefits
+- Voluntary Accident, Critical Illness, Hospital Indemnity and Legal
+- 401(k), including employer match, and Roth
+- Employee Stock Purchase Plan (ESPP)
+- Paid Time off, Sick Time, as well as corporate holidays observed
+- Employee Assistance Program
+- Life Balance benefits with Travel Assistance Services and Identity Theft
+- Additional Benefits include a Discount Program, Credit Union, Medicare Assistance, etc #OP-1
+Ooma is an equal-opportunity employer committed to recruiting, employing, retaining, promoting, and otherwise treating all employees on the basis of merit, qualifications, and competence. We do not discriminate on the basis of any trait or characteristic protected by applicable federal, state, or local laws.
+New York Pay Range
+$94,000 - $120,000 USD
+Create a Job Alert
+Interested in building your career at Ooma? Get future opportunities sent straight to your email.
+Apply for this job
+*
+indicates a required field

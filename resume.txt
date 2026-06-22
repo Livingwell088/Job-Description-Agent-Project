@@ -1,0 +1,46 @@
+Nicholas Li
+401-808-1902   Worcester, MA  Linicholas2019@gmail.com  PORTFOLIO  LINKEDIN  GITHUB
+
+EDUCATION
+Worcester Polytechnic Institute (WPI), Worcester, MA	
+Master of Science in Computer Science, GPA 3.8	August 2024
+Bachelor of Science in Computer Science, GPA 3.3	May 2023
+	Related Coursework: Software Engineering, Webware, Object-Oriented Design Concepts, Algorithms, Database Systems, Computer Networks, Machine Learning, Artificial Intelligence, Computer Vision, Data Mining
+
+SKILLS	     
+Java, Python, JavaScript, React, HTML, CSS, Spring, Agile, SQL, Docker, Git/Github, Bootstrap, Microsoft, ServiceNow
+
+EXPERIENCE
+City Carrier Assistant
+United States Postal Service, Worcester MA	June 2025 - December 2025
+Restaurant Manager
+Ming House, Worcester MA	February 2023 - Present
+Monitor daily operations with a goal of keeping everything orderly.
+Keep content updated: online website, online ordering platform, menu, hours and more.
+Resolve conflicts if and when they occur, both customer and employees.
+Software Developer Intern/Co-op
+Shaw Industries, Remote	May 2022 - August 2022
+Contributed to Shaw Industries Service Portal projects, including the building of catalog items, automating of backend workflow, and other frontend features.
+Developed catalog items used by hundreds of users, making it easier for employees to request access to services, products or permissions using ServiceNow, JavaScript, HTML, and CSS.
+Automated workflow for many procedures on the portal, minimizing time and increasing organization.
+Gathered requirements from business owners and stakeholders, created epics and stories, and conducted testing by documenting complete test scripts for users through the agile methodology.
+Migrated existing features from old production to new production during release and removed unused features.
+
+Project
+Ming House Restaurant Website, Ming House, August 2024 - Present	GitHub   Link 
+Intended for customers to be able to check out general info on the restaurant including prices, location and hours.
+Implemented REST API using Java Spring used by frontend to get or send necessary information.
+Connected the MySQL database to store all data of menu items, users, current cart, and placed order.
+Designed an intuitive user interface using HTML, CSS, JavaScript, BootStrap, and React
+Dockerize API and database for simplified deployment, testing, and running.
+React, HTML, CSS, JavaScript, BootStrap, Java, Spring, SQL, Docker	
+7Factor Staffing Tool, WPI, August 2022 - March 2023
+Worked with 7Factor to implement a staffing tool to track billable hours, company revenue, and project resources.
+Created user stories by conducting interviews with the founder and employees.
+Implemented responsive design for all platforms including phone, tablet, and other nonstandard displays, keeping all functionalities and features using MaterialUI and BootStrap.
+Java, Spring, PostgreSQL, JavaScript	
+Hospital Servicing Application, WPI, January 2022 - March 2022	GitHub
+Hospital Equipment Tracking and Servicing application for Brigham and Women's Hospital	 
+Integrated backend service with SQL and MongoDB to add, delete, update, and query information for service request components of the application.
+Designed and implemented backend API’s and integrated frontend with the APIs. 
+Java, JavaFX, SQL, MongoDB

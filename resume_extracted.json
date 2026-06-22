@@ -1,0 +1,114 @@
+{
+    "skills": [
+        "Java",
+        "Python",
+        "JavaScript",
+        "React",
+        "HTML",
+        "CSS",
+        "Spring",
+        "Agile",
+        "SQL",
+        "Docker",
+        "Git/Github",
+        "Bootstrap",
+        "Microsoft",
+        "ServiceNow"
+    ],
+    "experience": [
+        {
+            "title": "City Carrier Assistant",
+            "company": "United States Postal Service",
+            "location": "Worcester MA",
+            "dates": "June 2025 - December 2025"
+        },
+        {
+            "title": "Restaurant Manager",
+            "company": "Ming House",
+            "location": "Worcester MA",
+            "dates": "February 2023 - Present",
+            "responsibilities": [
+                "Monitor daily operations with a goal of keeping everything orderly.",
+                "Keep content updated: online website, online ordering platform, menu, hours and more.",
+                "Resolve conflicts if and when they occur, both customer and employees."
+            ]
+        },
+        {
+            "title": "Software Developer Intern/Co-op",
+            "company": "Shaw Industries",
+            "location": "Remote",
+            "dates": "May 2022 - August 2022",
+            "responsibilities": [
+                "Contributed to Shaw Industries Service Portal projects, including the building of catalog items, automating of backend workflow, and other frontend features.",
+                "Developed catalog items used by hundreds of users, making it easier for employees to request access to services, products or permissions using ServiceNow, JavaScript, HTML, and CSS.",
+                "Automated workflow for many procedures on the portal, minimizing time and increasing organization.",
+                "Gathered requirements from business owners and stakeholders, created epics and stories, and conducted testing by documenting complete test scripts for users through the agile methodology.",
+                "Migrated existing features from old production to new production during release and removed unused features."
+            ]
+        }
+    ],
+    "education": [
+        {
+            "degree": "Master of Science in Computer Science",
+            "institution": "Worcester Polytechnic Institute",
+            "location": "Worcester, MA",
+            "gpa": 3.8,
+            "graduation_date": "August 2024"
+        },
+        {
+            "degree": "Bachelor of Science in Computer Science",
+            "institution": "Worcester Polytechnic Institute",
+            "location": "Worcester, MA",
+            "gpa": 3.3,
+            "graduation_date": "May 2023"
+        }
+    ],
+    "projects": [
+        {
+            "name": "Ming House Restaurant Website",
+            "description": "Intended for customers to be able to check out general info on the restaurant including prices, location and hours.",
+            "technologies": [
+                "Java",
+                "Spring",
+                "MySQL",
+                "HTML",
+                "CSS",
+                "JavaScript",
+                "BootStrap",
+                "React",
+                "Docker"
+            ],
+            "dates": "August 2024 - Present",
+            "link": "GitHub Link"
+        },
+        {
+            "name": "7Factor Staffing Tool",
+            "description": "Worked with 7Factor to implement a staffing tool to track billable hours, company revenue, and project resources.",
+            "technologies": [
+                "Java",
+                "Spring",
+                "PostgreSQL",
+                "JavaScript"
+            ],
+            "dates": "August 2022 - March 2023"
+        },
+        {
+            "name": "Hospital Servicing Application",
+            "description": "Hospital Equipment Tracking and Servicing application for Brigham and Women's Hospital.",
+            "technologies": [
+                "Java",
+                "JavaFX",
+                "SQL",
+                "MongoDB"
+            ],
+            "dates": "January 2022 - March 2022",
+            "link": "GitHub"
+        }
+    ],
+    "tools": [
+        "ServiceNow",
+        "Docker",
+        "Git/Github",
+        "Microsoft"
+    ]
+}
