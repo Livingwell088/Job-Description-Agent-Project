@@ -1,96 +1,28 @@
-
-
-import os
-
-from prompt import calculate_match, extract_job_description, extract_job_description_prompt, extract_resume_prompt
-
+"""Streamlit"""
 
 import json
-import hashlib
+import os
+
+from agents import coordinator_agent, extractor_agent
+# from extractors import extract_job_description
+# from prompt import calculate_match
+
 
 
 import requests
 from bs4 import BeautifulSoup
 
 
-resume_content = ""
-job_description_content = ""
-
-
-def get_hash(text):
-    return hashlib.sha256(text.encode()).hexdigest()
-
-
-def save_resume_to_json():
-    with open("resume.txt", "r", encoding="utf-8") as file, \
-         open("resume_hash.txt", "w") as hash:
-        resume_content = file.read()
-
-        hashed = get_hash(resume_content)
-        
-
-
-    resume_result = json.loads(extract_resume_prompt(resume_content))
-    
-    with open("resume_extracted.json", "w") as file:
-        json.dump(resume_result, file, indent=4)
-    
-    with open("resume_hash.txt", "w") as hash:
-        hash.write(hashed)
-    
-
-def save_job_to_json():
-    with open("job.txt", "r", encoding="utf-8") as file, \
-         open("job_hash.txt", "w") as hash:
-        job_description_content = file.read()
-
-        hashed = get_hash(job_description_content)
-        
-
-    job_result = json.loads(extract_job_description_prompt(job_description_content))
-
-    with open("job_extracted.json", "w") as file:
-        json.dump(job_result, file, indent=4)
-    
-    with open("job_hash.txt", "w") as hash:
-        hash.write(hashed)
-
-
-
-
-# def coordinator():
-
-#     job = extractor_agent()
-
-#     parsed_resume = resume_parser()
-
-#     parsed_job = job_parser()
-
-#     match = matcher()
-
-#     advice = coach()
-
-#     return advice
-
-# def extractor_agent():
-
-
 
 
 import streamlit as st
 
-
-    
+from storage import get_hash, save_job_to_json, save_resume_to_json
 
 
 @st.cache_data
-def cached_extract(url):
-
-    try:
-        description = extract_job_description(url)
-        return description
-    except:
-        return None
+def cached_extract(url, pasted):
+    return extractor_agent(url, pasted)
 
 st.set_page_config(
     page_title="Job Application Agent",
@@ -189,19 +121,24 @@ if selected_tab == "Extract":
 
         with st.spinner("Extracting ..."):
 
-            if url:
-                st.write("TEST")
-                job = cached_extract(url)
+            job = cached_extract(url, paste)
 
-                if job == None:
-                    if paste:
-                        job = paste
-                    else:
-                        st.error("Please manually paste job description or try a valid url")
+            if job == None:
+                st.error("Please manually paste job description or try a valid url")
+
+            # if url:
+            #     st.write("TEST")
+            #     job = cached_extract(url)
+
+            #     if job == None:
+            #         if paste:
+            #             job = paste
+            #         else:
+            #             st.error("Please manually paste job description or try a valid url")
                 
 
-            else:
-                job = paste
+            # else:
+            #     job = paste
             
             st.session_state.job_text = job
         
@@ -246,59 +183,42 @@ if selected_tab == "Match":
     col1, col2 = st.columns(2)
 
     if st.button("Match"):
-        with st.spinner("Extracting ..."):
+        with st.spinner("Running Agent ..."):
 
-            if os.path.exists("resume_extracted.json") and os.path.exists("resume_hash.txt"):
+            result = coordinator_agent(url=None, paste=st.session_state.job_text)
 
-                with open("resume.txt", "r", encoding="utf-8") as resume, \
-                    open("resume_hash.txt", "r", encoding="utf-8") as hash:
-                    
-                    if get_hash(resume.read()) == hash.read():
-                        print("Resume File exists")
-                    else:
-                        save_resume_to_json()
+            if result["status"] != "success":
+                st.error(result.get("message", result.get("error")))
             else:
-                print("File not found")
-                save_resume_to_json()
+                st.session_state.report = result["report"]["data"]
+                
             
-            if os.path.exists("resume_extracted.json") and os.path.getsize("resume_extracted.json") > 0:
-                with open("resume_extracted.json", "r", encoding="utf-8") as file:
+            if os.path.exists("files/resume_extracted.json") and os.path.getsize("files/resume_extracted.json") > 0:
+                with open("files/resume_extracted.json", "r", encoding="utf-8") as file:
                     st.session_state.resume_json = json.load(file)
             else:
-                st.error("resume_extracted.json is empty")
+                st.error("files/resume_extracted.json is empty")
 
-            if os.path.exists("job_extracted.json") and os.path.exists("job_hash.txt"):
 
-                with open("job.txt", "r",encoding="utf-8") as job, \
-                    open("job_hash.txt", "r", encoding="utf-8") as hash:
-                    
-                    if get_hash(job.read()) == hash.read():
-                        st.write("Report of this job description already saved")
-                        
-                    else:
-                        save_job_to_json()
-            else:
-                save_job_to_json()
-
-            if os.path.exists("job_extracted.json") and os.path.getsize("job_extracted.json") > 0:
-                with open("job_extracted.json", "r", encoding="utf-8") as file:
+            if os.path.exists("files/job_extracted.json") and os.path.getsize("files/job_extracted.json") > 0:
+                with open("files/job_extracted.json", "r", encoding="utf-8") as file:
                     st.session_state.job_json = json.load(file)
             else:
-                st.error("job_extracted.json is empty")
+                st.error("files/job_extracted.json is empty")
 
 
-            with open("resume_extracted.json", "r", encoding="utf-8") as resume_file, \
-                open("job_extracted.json", "r", encoding="utf-8") as job_file:
+            # with open("files/resume_extracted.json", "r", encoding="utf-8") as resume_file, \
+            #     open("files/job_extracted.json", "r", encoding="utf-8") as job_file:
 
-                extracted_resume = resume_file.read()
-                extracted_job = job_file.read()
+            #     extracted_resume = resume_file.read()
+            #     extracted_job = job_file.read()
 
-                resume_and_description_match = calculate_match(extracted_resume, extracted_job)
-                # print(resume_and_description_match)
+            #     resume_and_description_match = calculate_match(extracted_resume, extracted_job)
+            #     # print(resume_and_description_match)
 
-                with open("report.md", "w", encoding="utf-8") as file:
-                    file.write(resume_and_description_match)
-                st.session_state.report = resume_and_description_match
+            #     with open("files/report.md", "w", encoding="utf-8") as file:
+            #         file.write(resume_and_description_match)
+            #     st.session_state.report = resume_and_description_match
 
     
 
@@ -323,109 +243,3 @@ if selected_tab == "Match":
         st.session_state.report,
         "report.md"
     )
-
-# from urllib.parse import urlparse
-
-# import panel as pn
-# import time
-# pn.extension()
-
-# # pn.pane.Markdown("## Job Application Agent")
-
-# url_input = pn.widgets.TextInput(name="URL", placeholder="Paste the job URL here...")
-# extract_button = pn.widgets.Button(name="Extract Job Description Info")
-# extracted_output = pn.pane.Markdown("Waiting for URL...")
-
-# def extract_on_click(event):
-#     url = url_input.value
-
-#     result = extract_job_description(url)
-
-#     extracted_output.object = "Job Description saved to job.txt \n\n\n" + result
-
-#     with open("job.txt", "w", encoding="utf-8") as file:
-#         file.write(result)
-
-
-
-# match_button = pn.widgets.Button(name="Match Resume with Job Description.")
-# match_output = pn.pane.Markdown("Waiting to match...")
-
-# def match_on_click(event):
-
-#     if os.path.exists("resume_extracted.json") and os.path.exists("resume_hash.txt"):
-
-#         with open("resume.txt", "r", encoding="utf-8") as resume, \
-#             open("resume_hash.txt", "r", encoding="utf-8") as hash:
-            
-#             if get_hash(resume.read()) == hash.read():
-#                 print("Resume File exists")
-#             else:
-#                 save_resume_to_json()
-#     else:
-#         print("File not found")
-#         save_resume_to_json()
-        
-
-#     if os.path.exists("job_extracted.json") and os.path.exists("job_hash.txt"):
-
-#         with open("job.txt", "r",encoding="utf-8") as job, \
-#             open("job_hash.txt", "r", encoding="utf-8") as hash:
-            
-#             if get_hash(job.read()) == hash.read():
-#                 print("Job File Exists")
-#                 match_output.object = "Job Description Matching already done and saved to report.md"
-#                 time.sleep(3)
-#                 server.stop()
-            
-#             else:
-#                 save_job_to_json()
-#     else:
-#         print("File not found")
-#         save_job_to_json()
-
-
-#     with open("resume_extracted.json", "r", encoding="utf-8") as resume_file, \
-#         open("job_extracted.json", "r", encoding="utf-8") as job_file:
-
-#         extracted_resume = resume_file.read()
-#         extracted_job = job_file.read()
-
-#         resume_and_description_match = calculate_match(extracted_resume, extracted_job)
-#         # print(resume_and_description_match)
-
-#         with open("report.md", "w", encoding="utf-8") as file:
-#             file.write(resume_and_description_match)
-#         match_output.object = resume_and_description_match
-
-
-
-# extract_button.on_click(extract_on_click)
-
-# extract_page = pn.Column(
-#     "## Job Application Agent",
-#     url_input,
-#     extract_button,
-#     extracted_output
-# )
-
-# match_button.on_click(match_on_click)
-
-# match_page = pn.Column(
-#     "## Match Resume and Job Description",
-#     match_button,
-#     match_output
-# )
-
-
-
-# app = pn.Tabs(
-#     ("Extraction", extract_page),
-#     ("Match", match_page)
-# )
-
-# server = app.show()
-
-
-    
-
